@@ -9,13 +9,13 @@ b = int(input("What is the lenght of the base: "))
 print()
 
 if (h == 0):
-    h = '{:.2f}'.format(math.sqrt(o**2 + b**2))
+    h = math.sqrt(o**2 + b**2)
     print("The hypotenuse is: " + str(h))
 elif (o == 0):
-    o = '{:.2f}'.format(math.sqrt(h**2 - b**2))
+    o = math.sqrt(h**2 - b**2)
     print("The opposite is: " + str(o))
 elif (b == 0):
-    b = '{:.2f}'.format(math.sqrt(h**2 - o**2))
+    b = math.sqrt(h**2 - o**2)
     print("The base is: " + str(b))
 else:
     print("One side must be unknown. Try again")
