@@ -1,6 +1,13 @@
 import random
-response = input("Enter your name: ")
-print("Hello " + response + ", here are 5 random numbers")
+yourName = input("Enter your name: ")
+yourAge = input("How old are you: ")
+
+if int(yourAge) > 50:
+    age = "old"
+else:
+    age = "young"
+
+print("Hello " + yourName + ". Wow you are " + age + ". Here are 5 random numbers")
 
 for i in range(5):
     print(random.random())
