@@ -9,12 +9,18 @@ x = 0.5
 N=[]
 X=[]
 
-for n in range(20):
+for n in range(10):
     N.append(n)
     X.append(x)
     x = lmap(r,x)
 print(N)
 print(X)
 
-plt.plot(X, N)
+# Plotting
+plt.xlabel('n')
+plt.ylabel('x')
+plt.title("Logistic Map")
+plt.grid(True)
+
+plt.plot(N, X)
 plt.show()
