@@ -2,11 +2,11 @@ import matplotlib.pyplot as plt
 
 def main() -> None:
 
-##### Program Constants #####    
+####### Program Constants ######   
     Max_N = 10
     r = 0.4
     x = 0.5
-#############################
+################################
 
     n_list=[]
     x_list=[]
@@ -20,6 +20,7 @@ def main() -> None:
 
     plotResults(n_list, x_list, title="Logistic Map", x_label="Iteration", y_label="x data")
 
+##### Function Definitions #####
 
 def lmap(r: float, x: float) -> float:
     return r*x*(1-x)
@@ -33,6 +34,7 @@ def plotResults(x_data: list, y_data: list, x_label: str, y_label: str, title: s
     plt.plot(x_data, y_data)
     plt.show()
 
+################################
 
 if __name__ == "__main__":
     main()
