@@ -1,26 +1,39 @@
 import matplotlib.pyplot as plt
 
+def main() -> None:
 
-def lmap(r,x):
+##### Program Constants #####    
+    Max_N = 10
+    r = 0.4
+    x = 0.5
+#############################
+
+    n_list=[]
+    x_list=[]
+
+    for n in range(Max_N):
+        n_list.append(n)
+        x_list.append(x)
+        x = lmap(r,x)
+    # print(n_list)
+    # print(x_list)
+
+    plotResults(n_list, "Itteration", x_list, "x data", "Logistic Map")
+
+
+def lmap(r: float, x: float) -> float:
     return r*x*(1-x)
 
-r = 0.4
-x = 0.5
-N=[]
-X=[]
+def plotResults(x_data: list, x_label: str, y_data: list, y_label:str, title: str) -> None:
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(title)
+    plt.grid(True)
 
-for n in range(10):
-    N.append(n)
-    X.append(x)
-    x = lmap(r,x)
-print(N)
-print(X)
+    plt.plot(x_data, y_data)
+    plt.show()
 
-# Plotting
-plt.xlabel('n')
-plt.ylabel('x')
-plt.title("Logistic Map")
-plt.grid(True)
 
-plt.plot(N, X)
-plt.show()
+if __name__ == "__main__":
+    main()
+
