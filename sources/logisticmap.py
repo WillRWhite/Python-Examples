@@ -18,13 +18,13 @@ def main() -> None:
     # print(n_list)
     # print(x_list)
 
-    plotResults(n_list, "Itteration", x_list, "x data", "Logistic Map")
+    plotResults(n_list, x_list, title="Logistic Map", x_label="Iteration", y_label="x data")
 
 
 def lmap(r: float, x: float) -> float:
     return r*x*(1-x)
 
-def plotResults(x_data: list, x_label: str, y_data: list, y_label:str, title: str) -> None:
+def plotResults(x_data: list, y_data: list, x_label: str, y_label: str, title: str) -> None:
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.title(title)
