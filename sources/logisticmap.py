@@ -31,7 +31,7 @@ def plotResults(x_data: list, y_data: list, x_label: str, y_label: str, title: s
     plt.title(title)
     plt.grid(True)
 
-    plt.plot(x_data, y_data)
+    plt.plot(x_data, y_data, marker = 'o', linestyle = '--')
     plt.show()
 
 ################################
