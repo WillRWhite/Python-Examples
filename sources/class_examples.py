@@ -28,41 +28,44 @@ class Myclass():
         return x + 1
     
     var = inc2(5)
-    
-pass
-print("Myclass =",Myclass.var)
 
-o1 = Myclass(3)
-print("o1 =", o1.var, o1.a, o1.b)
+def main():
+    print("Myclass =",Myclass.var)
+    Myclass.var = 7
 
-o2 =Myclass(2,4)
-print("o2 =", o2.var, o2.a, o2.b)
+    o1 = Myclass(3)
+    print("o1 =", o1.var, o1.a, o1.b)
 
-o1.var = 3
-print("o1 =", o1.var, o1.a, o1.b)
+    o2 =Myclass(2,4)
+    print("o2 =", o2.var, o2.a, o2.b)
 
-o2.var = 5
-print("o2 =", o2.var, o2.a, o2.b)
+    o1.var = 3
+    print("o1 =", o1.var, o1.a, o1.b)
 
-
-#-1 a = o.inc(2)
-#-1 print(a)
-
-o1.inc(2)
-print("o1 =", o1.var, o1.a, o1.b)
-
-o2.inc(3)
-print("o2 =", o2.var, o2.a, o2.b)
+    o2.var = 5
+    print("o2 =", o2.var, o2.a, o2.b)
 
 
+    #-1 a = o.inc(2)
+    #-1 print(a)
 
-# Example on "no-op" statements in Python
+    o1.inc(2)
+    print("o1 =", o1.var, o1.a, o1.b)
 
-# This one actually does something but has no effect
-print("",end="")
+    o2.inc(3)
+    print("o2 =", o2.var, o2.a, o2.b)
 
-# Proper no-ops:
-pass
-...
-None
 
+
+    # Example on "no-op" statements in Python
+
+    # This one actually does something but has no effect
+    print("",end="")
+
+    # Proper no-ops:
+    pass
+    ...
+    None
+
+if __name__ == "__main__":
+    main()
