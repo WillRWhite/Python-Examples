@@ -122,18 +122,28 @@ class Wormhole(CelestialBodie):
 ######################## Main ##########################  
 def main():
 
+    # Create an empty universe
     Universe()
+    # Populate the universe with Klingons, Space Stations, Black/Worm holes
+    # and add the Enterprise 
     Universe.populate_universe()
+    
     #Enterprise()
     # print(repr(u1))
     # print(u1.__repr__())
     # print(u1)
     # print('')
-    Universe.print_universe_grid()
-    #print(f"Enterprise co-ordinates: {Universe.e_x}, {Universe.e_y}")
-    print()
-    print('')
+    
+    print("\n\n")
     print("***************************************** STAR WARS! **********************************************")
+    print('')
+
+    # Now print the universe out
+ 
+    Universe.print_universe_grid()
+
+    # Print general universe information
+    print()
     print('')
     #print(Universe.__str__())
     print(Universe.info())
