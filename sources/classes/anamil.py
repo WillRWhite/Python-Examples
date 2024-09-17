@@ -1,6 +1,6 @@
 class Animal:
 
-    # A single "_" in a variable nale implies a privat variable and should not be accessed directly from an objext
+    # A single "_" in a variable name implies a private variable and should not be accessed directly from an objext
     # A double "__" is generally used for sub classes and the name is mangeled. See the link:
     # https://stackoverflow.com/questions/1301346/what-is-the-meaning-of-single-and-double-underscore-before-an-object-name
      
