@@ -4,50 +4,67 @@ import random
 
 ####################### Univewrse ######################
 class Universe:
-    def __init__(self,rows:int,cols:int) -> None:
-        self.rows = rows
-        self.cols = cols
-        # Initilise universe sector grid. Fill each sector with a '-'
-        # indicating an empty sector
-        self.sector = [['-'for x in range(cols)] for y in range(rows)]
+    rows = 30
+    cols = 30
+    e_x = 0
+    e_y = 0
+
+    # Initilise universe sector grid. Fill each sector with a '-'
+    # indicating an empty sector
+    
+    @classmethod
+    def __init__(cls):
+        cls.sector = [['-' for x in range(cls.cols)] for y in range(cls.rows)]
 
     # Print the universe as a retuangular grid. Only practiclr for relatively small universes
-    def print_universe_grid(self) -> None:
-        for x in range(self.rows):
-            for y in range(self.cols):
-                print(self.sector[x][y], ' ', end='')
+    @classmethod
+    def print_universe_grid(cls) -> None:
+        for x in range(cls.rows):
+            for y in range(cls.cols):
+                print(cls.sector[x][y], ' ', end='')
             print('')
 
     # Populate the universe with Klingons, space stations, blackholes and Wormholes
-    def populate_universe(self,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> None:
+    @classmethod
+    def populate_universe(cls,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> None:
         # "_prob" arguments are an approximate percentage weighting for each object - Klingon, 
         # SpaceStations Blackholes and Wormholews for each sector in the universe
-        for x in range(self.rows):
-            for y in range(self.cols):
+        for x in range(cls.rows):
+            for y in range(cls.cols):
                 prob = (random.randint(1,1000))/10
                 if prob <= k_prob:
-                    self.sector[x][y] = Klingon()
+                    cls.sector[x][y] = Klingon()
                 elif prob <= k_prob+s_prob:
-                    self.sector[x][y] = SpaceStation()
+                    cls.sector[x][y] = SpaceStation()
                 elif prob <= k_prob+s_prob+b_prob:
-                    self.sector[x][y] = Blackhole()
+                    cls.sector[x][y] = Blackhole()
                 elif prob <= k_prob+s_prob+b_prob+w_prob:
-                    self.sector[x][y] = Wormhole()
+                    cls.sector[x][y] = Wormhole()
+                else:
+                    cls.sector[x][y] = '-'
 
         # Now add the Enterprise in a firly central location. 
         # Just obliterate whatever is there
-        x = random.randint(8, self.rows-8)
-        y = random.randint(8, self.cols-8)
-        self.sector[x][y] = Enterprise()
+        cls.e_x = random.randint(8, Universe.rows-8)
+        cls.e_y = random.randint(8, Universe.cols-8)
+        cls.sector[cls.e_x][cls.e_y] = Enterprise()
 
-
-    def __repr__(self) -> str:
+    @classmethod
+    def __repr__() -> str:
          return (f" Universe(rows:int,cols:int) -> None")
+     
+    # def __str__() -> str:
+    #      info1 = (f"Universe size is {rows} X {cols}, with {Klingon.num} Klingons, ") 
+    #      info2 = (f"{SpaceStation.num} space stations, {Blackhole.num} black holes and {Wormhole.num} worm holes\n")
+    #      info3 = (f"Enterprise co-ordinates: {e_x}, {e_y}")
+    #      return info1+info2+info3
     
-    def __str__(self) -> str:
-         info1 = (f"Universe size is {self.rows} X {self.cols}, with {Klingon.num} Klingons, ") 
-         info2 = (f"{SpaceStation.num} space stations, {Blackhole.num} black holes and {Wormhole.num} worm holes")
-         return info1+info2
+    @classmethod
+    def info(cls) -> str:
+         info1 = (f"Universe size is {cls.rows} X {cls.cols}, with {Klingon.num} Klingons, ") 
+         info2 = (f"{SpaceStation.num} space stations, {Blackhole.num} black holes and {Wormhole.num} worm holes\n")
+         info3 = (f"Enterprise co-ordinates: {cls.e_x}, {cls.e_y}")
+         return info1+info2+info3
 
 ####################### StarShip #######################
 class StarShip:
@@ -105,18 +122,21 @@ class Wormhole(CelestialBodie):
 ######################## Main ##########################  
 def main():
 
-    u1 = Universe(20,20)
-    u1.populate_universe()
-    e = Enterprise()
+    Universe()
+    Universe.populate_universe()
+    #Enterprise()
     # print(repr(u1))
     # print(u1.__repr__())
     # print(u1)
     # print('')
-    u1.print_universe_grid()
+    Universe.print_universe_grid()
+    #print(f"Enterprise co-ordinates: {Universe.e_x}, {Universe.e_y}")
+    print()
     print('')
     print("***************************************** STAR WARS! **********************************************")
     print('')
-    print(u1)
+    #print(Universe.__str__())
+    print(Universe.info())
     print('')
     print("***************************************************************************************************")
 
