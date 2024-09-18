@@ -12,14 +12,14 @@ class Universe:
         self.sector = [['-'for x in range(cols)] for y in range(rows)]
 
     # Print the universe as a retuangular grid. Only practiclr for relatively small universes
-    def print_universe_grid(self) -> None:
+    def print_grid(self) -> None:
         for x in range(self.rows):
             for y in range(self.cols):
                 print(self.sector[x][y], ' ', end='')
             print('')
 
     # Populate the universe with Klingons, space stations, blackholes and Wormholes
-    def populate_universe(self,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> None:
+    def populate(self,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> None:
         # "_prob" arguments are an approximate percentage weighting for each object - Klingon, 
         # SpaceStations Blackholes and Wormholews for each sector in the universe
         for x in range(self.rows):
@@ -34,11 +34,14 @@ class Universe:
                 elif prob <= k_prob+s_prob+b_prob+w_prob:
                     self.sector[x][y] = Wormhole()
 
-        # Now add the Enterprise in a firly central location. 
+        # Now add the Enterprise in a fairly central location. 
         # Just obliterate whatever is there
-        x = random.randint(8, self.rows-8)
-        y = random.randint(8, self.cols-8)
+        universe_edge = int((self.rows+self.cols)/2*0.1)
+        x = random.randint(universe_edge, self.rows-universe_edge)
+        y = random.randint(universe_edge, self.cols-universe_edge)
         self.sector[x][y] = Enterprise()
+        Enterprise.x = x
+        Enterprise.y = y
 
 
     def __repr__(self) -> str:
@@ -80,6 +83,8 @@ class SpaceStation(StarShip):
     
 ###################### Enterprise ######################
 class Enterprise(StarShip):
+    x = 0
+    y = 0
     
     def __str__(self) -> str:
         return 'E'
@@ -102,21 +107,28 @@ class Wormhole(CelestialBodie):
     def __str__(self) -> str:
         return 'W'
 
-######################## Main ##########################  
+####################################### Main ####################################  
 def main():
 
-    u1 = Universe(20,20)
-    u1.populate_universe()
-    e = Enterprise()
-    # print(repr(u1))
-    # print(u1.__repr__())
-    # print(u1)
-    # print('')
-    u1.print_universe_grid()
+############################### Initilise the Game ##############################
+
+    # Create an empty universe
+    universe = Universe(100,100)
+    # Populate the universe with Star Ships and Celestial Bodie using default weightings
+    universe.populate()
+    # Add the Star Ship Enterprise somewhere in the middle of the universe
+    enterprise = Enterprise()
+
+    print(repr(universe))
+    print(universe)
+    print('')
+
+    #universe.print_grid()
     print('')
     print("***************************************** STAR WARS! **********************************************")
     print('')
-    print(u1)
+    print(universe)
+    print(f"Enterprose co-ordinates: {enterprise.x} {enterprise.y}")
     print('')
     print("***************************************************************************************************")
 
