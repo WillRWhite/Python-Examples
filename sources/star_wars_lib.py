@@ -91,6 +91,9 @@ class SpaceStation(StarShip):
 class Enterprise(StarShip):
     x = 0
     y = 0
+    def srs(self,Universe):
+        Universe.srs()
+
 
     
 
@@ -140,11 +143,13 @@ def main():
     print(f"Enterprose co-ordinates: {enterprise.x} {enterprise.y}")
     print('')
     print("***************************************************************************************************")
-    universe.srs()
+    #universe.srs()
+    enterprise.srs(universe)
+    print('')
+    enterprise.srs(universe)
     print('')
     universe.srs()
-    print('')
-    universe.srs()
+    
 
  
 
