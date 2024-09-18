@@ -1,4 +1,4 @@
-class Myclass():
+class Myclass:
     # Ref: https://chatgpt.com/c/66e41f81-1524-8004-9ff3-67e8bab90dd2
     # Atibute (var) not in __init__ method,therefore  has to be initilised in the class
     # Such attributes are reffered to as class attributes. They will also be available
@@ -27,23 +27,28 @@ class Myclass():
     def inc2(x):
         return x + 1
     
+    def inc3(x):
+        x = vars
+        return x
+    
     var = inc2(5)
 
 def main():
-    print("Myclass =",Myclass.var)
+    pass
+    print("Myclass =", Myclass.var)
     Myclass.var = 7
 
     o1 = Myclass(3)
-    print("o1 =", o1.var, o1.a, o1.b)
+    print("o1 =", o1.var, Myclass.var, o1.a, o1.b)
 
     o2 =Myclass(2,4)
-    print("o2 =", o2.var, o2.a, o2.b)
+    print("o2 =", o2.var, Myclass.var, o2.a, o2.b)
 
     o1.var = 3
-    print("o1 =", o1.var, o1.a, o1.b)
+    print("o1 =", o1.var, Myclass.var, o1.a, o1.b)
 
     o2.var = 5
-    print("o2 =", o2.var, o2.a, o2.b)
+    print("o2 =", o2.var, Myclass.var, o2.a, o2.b)
 
 
     #-1 a = o.inc(2)
