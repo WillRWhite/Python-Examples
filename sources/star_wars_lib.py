@@ -43,6 +43,12 @@ class Universe:
         Enterprise.x = x
         Enterprise.y = y
 
+    def srs(self):
+        for x in range(Enterprise.x-5, Enterprise.x+6):
+            for y in range(Enterprise.y-5, Enterprise.y+6):
+                print(self.sector[x][y], ' ', end='')
+            print('')
+
 
     def __repr__(self) -> str:
          return (f" Universe(rows:int,cols:int) -> None")
@@ -85,6 +91,9 @@ class SpaceStation(StarShip):
 class Enterprise(StarShip):
     x = 0
     y = 0
+
+    
+
     
     def __str__(self) -> str:
         return 'E'
@@ -113,7 +122,7 @@ def main():
 ############################### Initilise the Game ##############################
 
     # Create an empty universe
-    universe = Universe(100,100)
+    universe = Universe(40,40)
     # Populate the universe with Star Ships and Celestial Bodie using default weightings
     universe.populate()
     # Add the Star Ship Enterprise somewhere in the middle of the universe
@@ -123,7 +132,7 @@ def main():
     print(universe)
     print('')
 
-    #universe.print_grid()
+    universe.print_grid()
     print('')
     print("***************************************** STAR WARS! **********************************************")
     print('')
@@ -131,6 +140,11 @@ def main():
     print(f"Enterprose co-ordinates: {enterprise.x} {enterprise.y}")
     print('')
     print("***************************************************************************************************")
+    universe.srs()
+    print('')
+    universe.srs()
+    print('')
+    universe.srs()
 
  
 
