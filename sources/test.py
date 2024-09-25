@@ -1,4 +1,4 @@
-from class_examples import *
+from sources.classes.class_examples import *
 
 def main():
     print("Myclass =",Myclass.var)
