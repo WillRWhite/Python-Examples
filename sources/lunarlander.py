@@ -30,7 +30,7 @@ clock = pygame.time.Clock()
 pygame.key.set_repeat(1, 1)
 
 def load_image(name, colorkey=None):
-    fullname = os.path.join('lunarlander', name)
+    fullname = os.path.join('sources\lunarlander', name)
     try:
         image = pygame.image.load(fullname)
     except pygame.error as message:
@@ -94,7 +94,7 @@ class Lander(pygame.sprite.DirtySprite):
         self.original = self.image
         self.original_flame, self.flame_rect = load_image('lander_flame.jpg', -1)
 
-        self.mass = 10
+        self.mass = 500
         self.orientation = 0.0                       #
         self.rect.topleft = ((SCREEN_WIDTH / 2), 20) # The starting point.
         self.engine_power = 2   # The power of the engine.
@@ -138,7 +138,7 @@ class Lander(pygame.sprite.DirtySprite):
             self.velocity += V(magnitude=.5, angle=180)
 
     def ok_to_land(self):
-        return (self.orientation < 10 or self.orientation > 350) and self.velocity.magnitude < 5
+        return (self.orientation < 10 or self.orientation > 350) and self.velocity.magnitude < 10
 
     def check_landed(self, surface):
         if self.landed: return

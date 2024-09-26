@@ -16,6 +16,7 @@ Kprob=65                    # Probability of Universe cord having a Klingon (20)
 Sprob=15                    # Probability of Universe cord having a space station (8)
 Wprob=5                     # Probability of Universe cord having a worm hole (5)
 srsRange = 3                # Short range scan range
+starDate = 2000
 
 # Variable initilisation
 K_inUniverse = 0;           # Number of Klingons in universe

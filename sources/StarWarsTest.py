@@ -23,9 +23,29 @@
 
 class StarShip():
     def __init__(self) -> None:
-        self.torpedoes = 20
-        self.sheilds = 10
-        self.phasers = 5
+        self._x = 0
+        self._y = 0
+        self.energy:int = 1000
+        self.torpedoes:int = 20
+        self.phasers:int = 5
+        self.sheilds:int = 10
+        
+    
+    # Private Methods
+    ###########################################################
+    def _move(self,_x:int,_y:int):
+        # Calculate new cordinates
+        self._x = _x
+        self._y = _y
+
+    ###########################################################
+
+    def impulse_power(self,power:int,dir:int):
+        # Private function inherited from StarShip
+        self._x = self._x + power
+        self._y = self._y + dir
+        self._move(self._x,self._y)
+ 
     
     def add_torpedoes(self,num:int) -> None:
         self.torpedoes + num 
@@ -34,14 +54,33 @@ class Enterprise(StarShip):
     def __init__(self):
         self.life_support_date = 2000
         super().__init__()
-        # Below is an alternative
+        # Below is an alternative for running __init__ from parent class
         #StarShip.__init__(self)
- 
 
 
+print("")
+# Instanciate a StarShip. This will never happen since it is a base class
 ss = StarShip()
-print(ss.sheilds, ss.torpedoes)
 
+print(f"Ship details: x={ss._x}, y={ss._y}, energy={ss.energy}, torpedoes={ss.torpedoes}, phasers={ss.phasers}, shields={ss.sheilds} ")
+
+# Manually change position of StarShip for testing
+ss._x = 4
+ss._y = 3
+print(f"Ship details: x={ss._x}, y={ss._y}, energy={ss.energy}, torpedoes={ss.torpedoes}, phasers={ss.phasers}, shields={ss.sheilds} ")
+print("")
+
+# Instanciate The Enterprise
 e = Enterprise()
-print(e.sheilds, e.torpedoes, e.life_support_date)
+# Print it's details
+print(e._x, e._y, e.energy, e.torpedoes, e.sheilds, e.torpedoes, e.phasers,e.life_support_date)
+
+# Manually change position of Enterprise for testing
+e._x = 1
+e._y = 2
+print(e._x, e._y)
+
+e.impulse_power(3,2)
+print(e._x, e._y)
+
 

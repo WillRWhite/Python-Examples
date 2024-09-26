@@ -1,5 +1,7 @@
 class Myclass():
+    #
     # Ref: https://chatgpt.com/c/66e41f81-1524-8004-9ff3-67e8bab90dd2
+    #
     # Atibute (var) not in __init__ method,therefore  has to be initilised in the class
     # Such attributes are reffered to as class attributes. They will also be available
     # in an instanciated object which is constructed by __new__() followed by __init__

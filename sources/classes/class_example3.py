@@ -1,3 +1,5 @@
+# Ref: https://stackoverflow.com/questions/17330160/how-does-the-property-decorator-work-in-python
+
 class Temp:
     def __str__(self):
         return "User-friendly string"
@@ -57,30 +59,67 @@ class Dog:
             raise ValueError("Name must be a string")
 
 
+# This is an example od a class with a setter, getter and deleter
+class C:
+    '''I am class C'''
+    def __init__(self):
+        self._x = None
 
-dog = Dog("Fido")
-print(dog.name)  # Calls the getter: Output is "Fido"
-dog.name = "Buddy"  # Calls the setter to update the name
-print(dog.name)  # Output is "Buddy"
+    @property
+    def x(self):
+        """I'm the 'x' property."""
+        return self._x
 
-t = Test(3)
-print(t.name)
-t.name = "Scooby"
-print(t.name)
+    @x.setter
+    def x(self, value):
+        self._x = value
 
-# You shouldn't do this _name is a variable
-# the correct way to do this is via the setter method
-# t.name
-t._name = "Stanley"
-print(t._name)
+    @x.deleter
+    def x(self):
+        print("Deleting x")
+        del self._x
 
 
 
-t = Temp()
+a = C()
+print(f"Value of x after initially instanciating the class: {a.x}")
+#print(a.x)
 
-print(Temp())
-print(repr(Temp()))
+a.x=1
+print(f"Call the setter method - a.x=n. The value of x is now: {a.x}")
 
-print(t)
-print(repr(t))
+del a.x
+print("After calling the deleter method via del a.x, can no longer get a.x")
+print("This would cause a runtime error")
+print(a.x)
+
+#help(C)
+
+
+
+        # dog = Dog("Fido")
+        # print(dog.name)  # Calls the getter: Output is "Fido"
+        # dog.name = "Buddy"  # Calls the setter to update the name
+        # print(dog.name)  # Output is "Buddy"
+
+        # t = Test(3)
+        # print(t.name)
+        # t.name = "Scooby"
+        # print(t.name)
+
+        # # You shouldn't do this _name is a variable
+        # # the correct way to do this is via the setter method
+        # # t.name
+        # t._name = "Stanley"
+        # print(t._name)
+
+
+
+        # t = Temp()
+
+        # print(Temp())
+        # print(repr(Temp()))
+
+        # print(t)
+        # print(repr(t))
 

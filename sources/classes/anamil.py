@@ -17,17 +17,19 @@ class Animal:
     # __str__ is called when the object is printed, so __str__ overloads the print() function
          return f" Animal = {self._name}, height = {self._height}, weight = {self._weight}"   
     
+    def get_name(self) -> str:
+    # Method to get a name since we should reframe fromn using obj._name
+        return self._name
+    
     def set_name(self, name) -> None:
     # Method to set a name since we should reframe fromn using obj._name
     # Should do a check to ensure name is valid
         self._name = name
 
-    def get_name(self) -> str:
-    # Method to get a name since we should reframe fromn using obj._name
-        return self._name
-    
+
     def make_noise(self) -> str:
         return(self._sound)
+    
 
 # Constructor for "cat"
 cat = Animal("Silvesta", "1", "3", "meow")
@@ -44,6 +46,8 @@ cat._name = "Puss in Boots"
 print(cat._name)
 
 # Instead should do this:
+
+
 
 cat.set_name("Tiddles")
 print(cat.get_name())
