@@ -21,7 +21,7 @@ class Temp:
         return self._temp_in
     
     @temp.setter
-    def temp(self,temp_in:float) -> float:
+    def temp(self,temp_in:float):
         self._temp_in = temp_in
 
     

@@ -29,8 +29,7 @@ class StarShip():
         self.torpedoes:int = 20
         self.phasers:int = 5
         self.sheilds:int = 10
-        
-    
+         
     # Private Methods
     ###########################################################
     def _move(self,_x:int,_y:int):
@@ -57,30 +56,86 @@ class Enterprise(StarShip):
         # Below is an alternative for running __init__ from parent class
         #StarShip.__init__(self)
 
+    # getter / setter methods
+    @property
+    def x(self):
+        return self._x
+    
+    @property
+    def y(self):
+        return self._y
+    
+    @x.setter
+    def x(self, x:int):
+        self._x = x
 
-print("")
-# Instanciate a StarShip. This will never happen since it is a base class
-ss = StarShip()
+    @y.setter
+    def y(self, y:int):
+        self._y = y
 
-print(f"Ship details: x={ss._x}, y={ss._y}, energy={ss.energy}, torpedoes={ss.torpedoes}, phasers={ss.phasers}, shields={ss.sheilds} ")
 
-# Manually change position of StarShip for testing
-ss._x = 4
-ss._y = 3
-print(f"Ship details: x={ss._x}, y={ss._y}, energy={ss.energy}, torpedoes={ss.torpedoes}, phasers={ss.phasers}, shields={ss.sheilds} ")
-print("")
+def create_universe(rows:int=100,cols:int=100,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> list:
+    #universe_dim = [rows,cols]
+    # Create an empty universe of size rows x cols
+    universe = [['-'for x in range(cols)] for y in range(rows)]
+    return (universe)
 
-# Instanciate The Enterprise
-e = Enterprise()
-# Print it's details
-print(e._x, e._y, e.energy, e.torpedoes, e.sheilds, e.torpedoes, e.phasers,e.life_support_date)
+def print_universe(universe):
+    for y in range(len(universe[0])):
+        for x in range(len(universe)):
+            print(universe[x][y], end="  ")
+        print("")
 
-# Manually change position of Enterprise for testing
-e._x = 1
-e._y = 2
-print(e._x, e._y)
 
-e.impulse_power(3,2)
-print(e._x, e._y)
+if __name__ == "__main__":
+
+    ux = 9
+    uy = 9
+
+    universe = create_universe(ux,uy)
+    #print(len(universe[0]))
+    #print(len(universe))
+
+    e = Enterprise()
+    e.x = 2
+    e.y = 6
+
+    print(e.x, e.y)
+
+    universe[e.x][e.y] = 'E'
+
+    print_universe(universe)
+
+
+
+
+
+
+
+
+# print("")
+# # Instanciate a StarShip. This will never happen since it is a base class
+# ss = StarShip()
+
+# print(f"Ship details: x={ss._x}, y={ss._y}, energy={ss.energy}, torpedoes={ss.torpedoes}, phasers={ss.phasers}, shields={ss.sheilds} ")
+
+# # Manually change position of StarShip for testing
+# ss._x = 4
+# ss._y = 3
+# print(f"Ship details: x={ss._x}, y={ss._y}, energy={ss.energy}, torpedoes={ss.torpedoes}, phasers={ss.phasers}, shields={ss.sheilds} ")
+# print("")
+
+# # Instanciate The Enterprise
+# e = Enterprise()
+# # Print it's details
+# print(e._x, e._y, e.energy, e.torpedoes, e.sheilds, e.torpedoes, e.phasers,e.life_support_date)
+
+# # Manually change position of Enterprise for testing
+# e._x = 1
+# e._y = 2
+# print(e._x, e._y)
+
+# e.impulse_power(3,2)
+# print(e._x, e._y)
 
 
