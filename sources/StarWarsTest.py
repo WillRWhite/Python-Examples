@@ -65,14 +65,27 @@ class Enterprise(StarShip):
     def y(self):
         return self._y
     
-    @x.setter
-    def x(self, x:int):
+    def get_position(self):
+        return(self._x, self._y)
+    
+    # @x.setter
+    # def x(self, x:int):
+    #     self._x = x
+
+    # @y.setter
+    # def y(self, y:int):
+    #     self._y = y
+
+    #@position.setter
+    # Why is this not a setter - because it is a proper function which takes arguments
+    def set_position(self, universe:list, x:int, y:int):
         self._x = x
-
-    @y.setter
-    def y(self, y:int):
         self._y = y
-
+        if (self._x >= len(universe) or self._x < 0) or (self._y >= len(universe[0]) or self._y) < 0:
+            print("You can't escape the universe")
+            self._x = int(len(universe)/2)
+            self._y = int(len(universe[0])/2)
+        universe[self._x][self._y] = 'E'
 
 def create_universe(rows:int=100,cols:int=100,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> list:
     #universe_dim = [rows,cols]
@@ -91,18 +104,16 @@ if __name__ == "__main__":
 
     ux = 9
     uy = 9
-
     universe = create_universe(ux,uy)
     #print(len(universe[0]))
     #print(len(universe))
 
     e = Enterprise()
-    e.x = 2
-    e.y = 6
+    # Print the Enterprise's position
+    print(e.get_position())
+    e.set_position(universe,100,100)
 
-    print(e.x, e.y)
-
-    universe[e.x][e.y] = 'E'
+    #universe[e.x][e.y] = 'E'
 
     print_universe(universe)
 
