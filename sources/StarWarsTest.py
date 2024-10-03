@@ -50,7 +50,11 @@ class StarShip():
         self.torpedoes + num 
 
 class Enterprise(StarShip):
-    def __init__(self):
+    def __init__(self, _universe:list):
+        # If you happen to use the same list name for "univ" as you do in the
+        # main program this may cause problems because thelist is effectively 
+        # global?
+        self._universe = _universe
         self.life_support_date = 2000
         super().__init__()
         # Below is an alternative for running __init__ from parent class
@@ -78,14 +82,20 @@ class Enterprise(StarShip):
 
     #@position.setter
     # Why is this not a setter - because it is a proper function which takes arguments
-    def set_position(self, universe:list, x:int, y:int):
+    def set_position(self,x:int, y:int):
+        # First we need to replace the Enterprise's current position with empty space 
+        self._universe[self._x][self._y] = '-'
+        # Now assign the new co-ordinates for the enterprise and check valid and correct
+        # with default if necessary
         self._x = x
         self._y = y
-        if (self._x >= len(universe) or self._x < 0) or (self._y >= len(universe[0]) or self._y) < 0:
+        if self._y < 0 or self._x < 0 or self._y >= len(self._universe[0]) or self._x >= len(self._universe[0]):
+        #if (self._x >= len(self._universe) or self._x < 0 or self._y >= len(self._universe[0]) or self._y) < 0:
             print("You can't escape the universe")
-            self._x = int(len(universe)/2)
-            self._y = int(len(universe[0])/2)
-        universe[self._x][self._y] = 'E'
+            # Se default positions
+            self._x = int(len(self._universe)/2)
+            self._y = int(len(self._universe[0])/2)
+        self._universe[self._x][self._y] = 'E'
 
 def create_universe(rows:int=100,cols:int=100,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> list:
     #universe_dim = [rows,cols]
@@ -108,13 +118,23 @@ if __name__ == "__main__":
     #print(len(universe[0]))
     #print(len(universe))
 
-    e = Enterprise()
+    # Crerate an Enterprise in the universe
+    e = Enterprise(universe)
     # Print the Enterprise's position
     print(e.get_position())
-    e.set_position(universe,100,100)
 
-    #universe[e.x][e.y] = 'E'
+    # Set an new position for the Enterprise
+    e.set_position(6,2)
+    print(e.get_position())
+    print_universe(universe)
 
+    # Try to set a position outside of the universe
+    e.set_position(6,100)
+    print(e.get_position())
+    print_universe(universe)
+
+    e.set_position(100,6)
+    print(e.get_position())
     print_universe(universe)
 
 
