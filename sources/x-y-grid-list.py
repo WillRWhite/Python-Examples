@@ -36,3 +36,24 @@ if __name__ == "__main__":
     print_grid_neg_y()
     print("")
     print_grid_pos_y()
+    print("")
+
+   
+   ############ Another Example ############
+
+   # Initilise an empty list using a list comprehension and then just a regular loop
+   
+    rows = 3 
+    cols = 4 
+
+    empty_2d_list1 = [[0 for _ in range(cols)] for _ in range(rows)] 
+
+    empty_2d_list2 = [] 
+    for _ in range(rows): 
+        empty_2d_list2.append([0] * cols)
+
+
+    print(empty_2d_list1)
+    print("")
+    print(empty_2d_list2)
+    print("")
