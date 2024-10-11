@@ -1,4 +1,4 @@
-def draw(n):
+def draw(n:int) -> None:
 
     if n==0:
         return
@@ -9,9 +9,9 @@ def draw(n):
         print("#", end="")
     print()
 
-def count(max_i, i=0):
+def count(max_i:int, i:int=0) -> int:
     i+=1
-    j=i
+    j:int=i
     if i==max_i:
         print("")
         return i
