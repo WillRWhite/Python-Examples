@@ -51,26 +51,29 @@ class StarShip():
 
 class Enterprise(StarShip):
     def __init__(self, _universe:list):
+        super().__init__()
+        # Below is an alternative for running __init__ from parent class
+        #StarShip.__init__(self)
+        #
         # If you happen to use the same list name for "univ" as you do in the
         # main program this may cause problems because thelist is effectively 
         # global?
         self._universe = _universe
+        self._universe[self._x][self._y] = 'E'
         self.life_support_date = 2000
-        super().__init__()
-        # Below is an alternative for running __init__ from parent class
-        #StarShip.__init__(self)
+
 
     # getter / setter methods
-    @property
-    def x(self):
-        return self._x
+    # @property
+    # def x(self):
+    #     return self._x
     
-    @property
-    def y(self):
-        return self._y
+    # @property
+    # def y(self):
+    #     return self._y
     
     def get_position(self):
-        return(self._x, self._y)
+        return(self._y, self._x)
     
     # @x.setter
     # def x(self, x:int):
@@ -82,60 +85,72 @@ class Enterprise(StarShip):
 
     #@position.setter
     # Why is this not a setter - because it is a proper function which takes arguments
-    def set_position(self,x:int, y:int):
+    def set_position(self,col:int, row:int):
         # First we need to replace the Enterprise's current position with empty space 
         self._universe[self._x][self._y] = '-'
         # Now assign the new co-ordinates for the enterprise and check valid and correct
         # with default if necessary
-        self._x = x
-        self._y = y
-        if self._y < 0 or self._x < 0 or self._y >= len(self._universe[0]) or self._x >= len(self._universe[0]):
+        self._x = col
+        self._y = row
+        if self._y < 0 or self._x < 0 or self._y >= len(self._universe[0]) or self._x >= len(self._universe):
         #if (self._x >= len(self._universe) or self._x < 0 or self._y >= len(self._universe[0]) or self._y) < 0:
             print("You can't escape the universe")
-            # Se default positions
+            # Set default positions
             self._x = int(len(self._universe)/2)
             self._y = int(len(self._universe[0])/2)
         self._universe[self._x][self._y] = 'E'
 
-def create_universe(rows:int=100,cols:int=100,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> list:
+def create_universe(max_cols:int=100,max_rows:int=100,k_prob:float=3.0,s_prob:float=0.8, b_prob:float=0.4,w_prob:float=0.2) -> list:
     #universe_dim = [rows,cols]
     # Create an empty universe of size rows x cols
-    universe = [['-'for x in range(cols)] for y in range(rows)]
+    universe = [['-' for _ in range(max_cols)] for _ in range(max_rows)]
     return (universe)
 
-def print_universe(universe):
-    for y in range(len(universe[0])):
-        for x in range(len(universe)):
-            print(universe[x][y], end="  ")
+def print_universe(_universe):
+    for cols in range(len(_universe)):
+        for rows in range(len(_universe[0])):
+            print(_universe[cols][rows], end="  ")
         print("")
+    print("")
 
 
 if __name__ == "__main__":
 
-    ux = 9
-    uy = 9
+    ux = 20
+    uy = 10
     universe = create_universe(ux,uy)
+    
+    print_universe(universe)
+
+    #universe[4][10] = 'A'
     #print(len(universe[0]))
     #print(len(universe))
 
     # Crerate an Enterprise in the universe
     e = Enterprise(universe)
     # Print the Enterprise's position
+    print_universe(universe)
     print(e.get_position())
 
     # Set an new position for the Enterprise
-    e.set_position(6,2)
+    e.set_position(7,1)
     print(e.get_position())
     print_universe(universe)
+
+    e.set_position(5,8)
+    print(e.get_position())
+    print_universe(universe)
+
+    #universe[6][1] = "A"
 
     # Try to set a position outside of the universe
-    e.set_position(6,100)
-    print(e.get_position())
-    print_universe(universe)
+    #e.set_position(6,100)
+    #print(e.get_position())
+    #print_universe(universe)
 
-    e.set_position(100,6)
-    print(e.get_position())
-    print_universe(universe)
+    #e.set_position(100,6)
+    #print(e.get_position())
+    #print_universe(universe)
 
 
 

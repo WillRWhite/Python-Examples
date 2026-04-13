@@ -57,3 +57,16 @@ if __name__ == "__main__":
     print("")
     print(empty_2d_list2)
     print("")
+
+
+    empty_2d_list3a=[]
+    empty_2d_list3b=[]
+
+    for x in range(rows):
+        for y in range(cols):
+            empty_2d_list3a.append([(x,y)])
+        empty_2d_list3b.append(empty_2d_list3a)
+
+    print(empty_2d_list3b)
+
+
