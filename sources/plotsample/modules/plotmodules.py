@@ -1,12 +1,8 @@
 import matplotlib.pyplot as plt
-#from matplotlib import pyplot as plt
-#from mpl_toolkits.mplot3d import Axes3D
-# import numpy as np
-
 
 def plot_xy(x_list: list, y_list: list) -> None:
     # 1 Create the plot
-    plt.plot(x_values, y_values)
+    plt.plot(x_list, y_list)
 
     # 2 Adjust the spines to intersect at (0,0)
     ax = plt.gca()
@@ -51,4 +47,3 @@ if __name__ == "__main__":
     y_values = [(a*x**2)+(b*x)+c for x in x_values]
 
     plot_xy(x_values, y_values)
-
