@@ -7,7 +7,7 @@ def main():
     print(get_missing_numbers(missing_numbers))
     print(get_missing_number(missing_number))
 
-# Function to finds missing numbers in a list (one or more)
+# Function to finds missing numbers in a list (one or more missing)
 def get_missing_numbers(number_list: list) -> list:
     missing_numbers = []
     current_index = 0
@@ -34,7 +34,7 @@ def get_missing_numbers(number_list: list) -> list:
         print(number_list)
     return missing_numbers
 
-# Function to finds  one missing number in a list (no itterating required)
+# Function to finds one missing number in a list (no itterating required)
 # If they are more than one missing number it will return the sum of
 # all missing numbers
 def get_missing_number(number_list: list) -> int:
