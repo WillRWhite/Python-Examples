@@ -35,13 +35,13 @@ my_backups   = ("apple", "1234", "oranges", "pears", "apple", "45", "oranges", "
 print(restore_documents(my_originals, my_backups))
 
 # One step at a time
-combine = (my_originals + my_backups)
+combine = my_originals + my_backups
 #print(combine)
 
-upper = ((map(lambda doc: doc.upper(), combine)))
+upper = map(lambda doc: doc.upper(), combine)
 #print(tuple(upper))
 
-filter = (filter(lambda doc: not(doc.isdigit()), upper))
+filter = filter(lambda doc: not(doc.isdigit()), upper)
 #print(tuple(filter))
 
 filter_set = set(filter)
