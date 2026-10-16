@@ -15,7 +15,7 @@ def restore_documents(originals: tuple[str, ...], backups: tuple[str, ...]) -> s
             )
         )
 '''
-'''
+
 def restore_documents(originals: tuple[str, ...], backups: tuple[str, ...]) -> set[str]:
     # This is the one line:
     #return set(filter(lambda doc: not(doc.isdigit()),(map(lambda doc: doc.upper(), original + backup))))
@@ -25,7 +25,6 @@ def restore_documents(originals: tuple[str, ...], backups: tuple[str, ...]) -> s
             )
         )
     )
-'''
 
 
 # Tuples to process
