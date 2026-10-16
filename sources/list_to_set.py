@@ -6,7 +6,9 @@ def restore_documents(originals: tuple[str, ...], backups: tuple[str, ...]) -> s
     return set(
         map(
             lambda doc: doc.upper(), set(
-                filter(lambda doc: not(doc.isdigit()), set(original + backup))
+                filter(
+                    lambda doc: not(doc.isdigit()), set(original + backup)
+                    )
                 )
             )
         )
