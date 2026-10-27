@@ -3,11 +3,17 @@
 pynano: a small nano-style terminal text editor, built on curses.
 See: https://claude.ai/share/a67601e6-d43b-421a-b88c-aa1c91dbea9d
 
+Usage:  python pynano.py [FILE]
+
 Requires Python 3.10+ (uses ``match`` statements).
 Requires cursers, not available on Windows by default:
-(.venv) py -m pip install windows-curses
 
-Usage:  python pynano.py [FILE]
+> py -m venv .venv
+> .venv\Scripts\activate.bat
+(.venv) > py -m pip install windows-curses
+
+For Linux / macOS
+Curses is built-in
 
 """
 
